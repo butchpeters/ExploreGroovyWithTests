@@ -7,9 +7,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>GroovyTechTalk</groupId>
-    <artifactId>GroovyTechTalk</artifactId>
-    <name>Example Project</name>
+    <groupId>com.3snip</groupId>
+    <artifactId>exploreGroovyWithTests</artifactId>
+    <name>Explore Groovy With Tests</name>
     <version>1.0</version>
 
     <dependencies>
