@@ -7,8 +7,8 @@ class ExpandoMetaClassTest extends GroovyTestCase {
     String.metaClass.capitalize = {->
       delegate.toUpperCase()
     }
-    assertEquals "BEFORE", stringBeforeChange.capitalize()
-    assertEquals "AFTER", "after".capitalize()
+    assert "BEFORE" == stringBeforeChange.capitalize()
+    assert "AFTER" == "after".capitalize()
   }
 
   void testExpandClassStaticFunctionality() {
@@ -16,7 +16,7 @@ class ExpandoMetaClassTest extends GroovyTestCase {
       "Chuck Norris destroyed $it!"
     }
 
-    assertEquals "Chuck Norris destroyed polio!", String.chuckNorris("polio")
+    assert "Chuck Norris destroyed polio!" == String.chuckNorris("polio")
   }
 
   void testExpandClassConstructor() {
@@ -24,7 +24,7 @@ class ExpandoMetaClassTest extends GroovyTestCase {
       new String(input.head())
     }
 
-    assertEquals "first", new String(["first", "second", "third"])
+    assert "first" == new String(["first", "second", "third"])
   }
 
   void testExpandClassMethodOverloading() {
@@ -33,14 +33,14 @@ class ExpandoMetaClassTest extends GroovyTestCase {
       String.valueOf(input.head())
     }
 
-    assertEquals "first", String.valueOf(["first", "second", "third"])
-    assertEquals "5", String.valueOf(Long.valueOf(5))
+    assert "first" == String.valueOf(["first", "second", "third"])
+    assert "5" == String.valueOf(Long.valueOf(5))
   }
 
   void testExpandClassMethodOverriding() {
     String.metaClass.static.valueOf = { long l -> "No long for you!" }
 
-    assertEquals "1", String.valueOf(1i)
-    assertEquals "No long for you!", String.valueOf(1l)
+    assert "1" == String.valueOf(1i)
+    assert "No long for you!" == String.valueOf(1l)
   }
 }

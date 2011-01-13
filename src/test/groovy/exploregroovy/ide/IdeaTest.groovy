@@ -13,12 +13,12 @@ class IdeaTest extends GroovyTestCase {
   void testDynamic_Basic() {
     def myDouble = Double.valueOf(-5)
 
-    assertEquals 5, myDouble.abs()
-    assertEquals 5, absValue(myDouble)
+    assert 5 == myDouble.abs()
+    assert 5 == absValue(myDouble)
   }
 
   void testDynamic_MetaClass() {
     Double.metaClass.butch = "dynamicProperty"
-    assertEquals "dynamicProperty", Double.valueOf(5).butch
+    assert "dynamicProperty" == Double.valueOf(5).butch
   }
 }

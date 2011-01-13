@@ -3,46 +3,25 @@ package exploregroovy.interfaces
 import java.sql.ResultSet
 
 class ClosureAsInterfaceTest extends GroovyTestCase {
-  def __ = "FILL IN THE BLANK"
-
-  def javaImpl = [
-          foo: {
-            3
-          },
-
-          bar: {
-            it + 5
-          }
-  ] as MyJavaInterface
-
-  def groovyImpl = [
-          foo: {
-            3
-          },
-
-          bar: {
-            it + 5
-          }
-  ] as MyGroovyInterface
 
   void testJavaInterface_JavaCode() {
     SomeJavaClass javaClass = new SomeJavaClass()
-    assertEquals(__, javaClass.computeWithJavaInterface(javaImpl, 3))
+    assert 11 == javaClass.computeWithJavaInterface(javaImpl, 3)
   }
 
   void testJavaInterface_GroovyCode() {
     SomeGroovyClass groovyClass = new SomeGroovyClass()
-    assertEquals(__, groovyClass.computeWithJavaInterface(javaImpl, 3))
+    assert 11 == groovyClass.computeWithJavaInterface(javaImpl, 3)
   }
 
   void testGroovyInterface_JavaCode() {
     SomeJavaClass javaClass = new SomeJavaClass()
-    assertEquals(__, javaClass.computeWithGroovyInterface(groovyImpl, 3))
+    assert 11 == javaClass.computeWithGroovyInterface(groovyImpl, 3)
   }
 
   void testGroovyInterface_GroovyCode() {
     SomeGroovyClass groovyClass = new SomeGroovyClass()
-    assertEquals(__, groovyClass.computeWithGroovyInterface(groovyImpl, 3))
+    assert 11 == groovyClass.computeWithGroovyInterface(groovyImpl, 3)
   }
 
   void testImplementInterfaceWithOneMethod() {
@@ -51,9 +30,9 @@ class ClosureAsInterfaceTest extends GroovyTestCase {
       o == null ? -1 : o.intValue() - 4
     } as Comparable
 
-    assertEquals (-1 , comparable.compareTo (3))
-    assertEquals 0, comparable.compareTo(4)
-    assertEquals 1, comparable.compareTo(5)
+    assert -1 == comparable.compareTo (3)
+    assert 0 == comparable.compareTo(4)
+    assert 1 == comparable.compareTo(5)
   }
 
   void testPartiallyImplementedInterface() {
@@ -62,14 +41,11 @@ class ClosureAsInterfaceTest extends GroovyTestCase {
             getString: {"oh hai"}
     ] as ResultSet
 
-    assertTrue(rs.next())
-    assertEquals("oh hai", rs.getString(2))
+    assert rs.next()
+    assert "oh hai" == rs.getString(2)
 
-    try {
+    shouldFail UnsupportedOperationException, {
       rs.getInt(3)
-      fail "Should have thrown exception"
-    } catch (UnsupportedOperationException ex) {
-      // expected
     }
   }
 
@@ -98,4 +74,26 @@ class ClosureAsInterfaceTest extends GroovyTestCase {
       // expected
     }
   }
+
+  // Helpers
+
+  def javaImpl = [
+          foo: {
+            3
+          },
+
+          bar: {
+            it + 5
+          }
+  ] as MyJavaInterface
+
+  def groovyImpl = [
+          foo: {
+            3
+          },
+
+          bar: {
+            it + 5
+          }
+  ] as MyGroovyInterface
 }
