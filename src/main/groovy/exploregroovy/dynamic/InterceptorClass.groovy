@@ -8,7 +8,7 @@ class InterceptorClass implements GroovyInterceptable {
       throw new MissingMethodException(name, InterceptorClass, args)
     }
 
-    //println "Beginning $name"
+    //println "Beginning $name"  -- Don't do this
     System.out.println("Beginning $name")
 
     def result = metaMethod.invoke(this, args)

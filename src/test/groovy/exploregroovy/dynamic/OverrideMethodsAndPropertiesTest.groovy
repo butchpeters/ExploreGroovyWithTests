@@ -2,6 +2,8 @@ package exploregroovy.dynamic
 
 
 class OverrideMethodsAndPropertiesTest extends GroovyTestCase {
+  def __ = "What do you expect?"
+
   void testOverrideMethod() {
     def cookieMonster = new MyClassDoesAnything()
     assert "I want a COOKIE" == cookieMonster.equals(5)
@@ -18,7 +20,7 @@ class OverrideMethodsAndPropertiesTest extends GroovyTestCase {
 
   void testInterceptorClass() {
     def interceptor = new InterceptorClass()
-    assert "Here: Echoing: Hello" == interceptor.echo("Hello")
+    assert __ == interceptor.echo("Hello")
     shouldFail MissingMethodException, {
       interceptor.wtf()
     }

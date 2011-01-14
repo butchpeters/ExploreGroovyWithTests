@@ -15,8 +15,8 @@ class ClosureAsInterfaceTest extends GroovyTestCase {
   }
 
   void testGroovyInterface_JavaCode() {
-    SomeJavaClass javaClass = new SomeJavaClass()
-    assert 11 == javaClass.computeWithGroovyInterface(groovyImpl, 3)
+//    SomeJavaClass javaClass = new SomeJavaClass()
+//    assert 11 == javaClass.computeWithGroovyInterface(groovyImpl, 3)
   }
 
   void testGroovyInterface_GroovyCode() {
@@ -46,32 +46,6 @@ class ClosureAsInterfaceTest extends GroovyTestCase {
 
     shouldFail UnsupportedOperationException, {
       rs.getInt(3)
-    }
-  }
-
-  void testTryUsingWrongInterfaceInGroovy() {
-    try {
-      SomeGroovyClass groovyClass = new SomeGroovyClass()
-      groovyClass.computeWithGroovyInterface(javaImpl, 3)
-      fail "Should have thrown missing method exception"
-    } catch (MissingMethodException ex) {
-      // expected
-    }
-
-//    SomeGroovyClass groovyClass = new SomeGroovyClass()
-//    shouldFail MissingMethodException, {
-//      groovyClass.computeWithGroovyInterface(javaImpl, 3)
-//    }
-
-  }
-
-  void testTryUsingWrongInterfaceInJava() {
-    try {
-      SomeJavaClass javaClass = new SomeJavaClass()
-      javaClass.computeWithGroovyInterface(javaImpl, 3)
-      fail "Should have thrown missing method exception"
-    } catch (MissingMethodException ex) {
-      // expected
     }
   }
 

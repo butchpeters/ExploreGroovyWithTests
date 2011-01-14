@@ -2,6 +2,8 @@ package exploregroovy.basics
 
 
 class CodeStyleTest extends GroovyTestCase {
+  def __ = "What do you expect here?"
+
   void testSemicolonsOptional() {
     assert true == true;
     assert true == true
@@ -30,16 +32,16 @@ class CodeStyleTest extends GroovyTestCase {
   void testReturnKeywordOptional() {
     assert "Butch" == methodReturnsAValue()
 
-    assert "Butch" == methodWithIfElseReturnsDifferentValues(true)
-    assert "Brian" == methodWithIfElseReturnsDifferentValues(false)
+    assert __ == methodWithIfElseReturnsDifferentValues(true)
+    assert __ == methodWithIfElseReturnsDifferentValues(false)
 
-    assert "Brian" == methodWithIfDoesNotImplicitlyReturn(true)
-    assert "Brian" == methodWithIfDoesNotImplicitlyReturn(false)
+    assert __ == methodWithIfDoesNotImplicitlyReturn(true)
+    assert __ == methodWithIfDoesNotImplicitlyReturn(false)
   }
 
   void testDefAndTypes() {
     def a = "Hello" // Dynamic Type: Preferred
-    String b = "Hello" // Static Type: Less preferred, maybe slower? http://groovy.codehaus.org/Runtime+vs+Compile+time,+Static+vs+Dynamic
+    String b = "Hello" // Static Type Assertion: Less preferred, maybe slower? http://groovy.codehaus.org/Runtime+vs+Compile+time,+Static+vs+Dynamic
     def String c = "Hello" // Redundant, idiotic, don't do it
 
     assert a == b && b == c

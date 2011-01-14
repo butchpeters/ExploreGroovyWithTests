@@ -1,38 +1,39 @@
 package exploregroovy.basics
 
 class TruthTest extends GroovyTestCase {
+  def __ = "true or false?"
   void testTruthAndCoercion() {
     assert true
     assert !false
 
-    assert !null
+    assert (null && true) == __
     def undefinedVariable
-    assert !undefinedVariable
+    assert (undefinedVariable && true) == __
     def definedVariable = new Object()
-    assert definedVariable
+    assert (definedVariable && true) == __
 
     shouldFail MissingPropertyException, {
         assert !unknownVariable
     }
 
-    assert 1
-    assert !0
+    assert (1 && true) == __
+    assert (0 && true) == __
 
-    assert "hi"
-    assert !""
+    assert ("hi" && true) == __
+    assert ("" && true) == __
 
-    assert ["1", "2"]
-    assert ![]
+    assert (["1", "2"] && true) == __
+    assert ([] && true) == __
 
-    assert [key: "value"]
-    assert ![:]
+    assert ([key: "value"] && true) == __
+    assert ([:] && true) == __
 
     def iter = ["1"].iterator()
-    assert iter
+    assert (iter && true) == __
     iter.next()
-    assert !iter
+    assert (iter && true) == __
 
-    assert "Hello World" =~ /World/
-    assert !("Hello" =~ /World/)
+    assert (("Hello World" =~ /World/) && true) == __
+    assert (("Hello" =~ /World/) && true) == __
   }
 }

@@ -2,6 +2,8 @@ package exploregroovy.basics
 
 
 class GStringTest extends GroovyTestCase {
+  def __ = "What do  you expect?"
+
   void testStringQuotes() {
     def doubleQuotes = "I am a string"
     assert java.lang.String == doubleQuotes.class
@@ -52,17 +54,17 @@ $name
     def name = "Butch";
     def greeting = "Hello, my name is $name"
     name = "Brian"
-    assert "Hello, my name is Butch" == greeting
+    assert "Hello, my name is $__" == greeting
 
     def person = [name: "Butch"]
     def personGreeting = "Hello, my name is ${person.name}"
     assert "Hello, my name is Butch" == personGreeting
     person.name = "Brian"
-    assert "Hello, my name is Butch" == personGreeting
+    assert "Hello, my name is $__" == personGreeting
 
     def closureGreeting = "Hello, my name is ${-> person.name}"
     person.name = "Peters"
-    assert "Hello, my name is Peters" == closureGreeting
+    assert "Hello, my name is $__" == closureGreeting
   }
 
   void testRegularExpressions() {

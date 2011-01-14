@@ -2,22 +2,24 @@ package exploregroovy.basics
 
 
 class SwitchTest extends GroovyTestCase {
+  def __ = "What do you expect?"
+
   void testGroovySwitchStatement() {
-    assert "You chose int 1" == methodWithSwitch(1i)
-    assert "You chose int 1" == methodWithSwitch(1l)
-    assert "You chose int 1" == methodWithSwitch(Integer.valueOf(1))
-    assert "You chose String 1" == methodWithSwitch("1")
+    assert "You chose $__" == methodWithSwitch(1i)
+    assert "You chose $__" == methodWithSwitch(1l)
+    assert "You chose $__" == methodWithSwitch(Integer.valueOf(1))
+    assert "You chose $__" == methodWithSwitch("1")
     def value = 1
-    assert "You chose String 1" == methodWithSwitch("$value")
+    assert "You chose $__" == methodWithSwitch("$value")
 
-    assert "You chose List" == methodWithSwitch(["1", "2"])
-    assert "You chose something in the List" == methodWithSwitch("2")
-    assert "You are between 7 and 11 or 21" == methodWithSwitch(9)
+    assert "You chose $__" == methodWithSwitch(["1", "2"])
+    assert "You chose $__" == methodWithSwitch("2")
+    assert "You chose $__" == methodWithSwitch(9)
 
-    assert "You chose IP Address" == methodWithSwitch("172.16.17.123")
-    assert "You chose E-Mail Address" == methodWithSwitch("bpeters@follettsoftware.com")
+    assert "You chose $__" == methodWithSwitch("172.16.17.123")
+    assert "You chose $__" == methodWithSwitch("bpeters@follettsoftware.com")
 
-    assert "You chose something else" == methodWithSwitch("3")
+    assert "You chose $__" == methodWithSwitch("3")
   }
 
   def methodWithSwitch(arg) {
@@ -45,7 +47,7 @@ class SwitchTest extends GroovyTestCase {
         break
 
       case 7..11:
-        result = "You are between 7 and 11"
+        result = "You chose between 7 and 11"
       case 21:
         result += " or 21"
         break

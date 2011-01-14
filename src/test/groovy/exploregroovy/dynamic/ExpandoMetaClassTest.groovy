@@ -43,4 +43,18 @@ class ExpandoMetaClassTest extends GroovyTestCase {
     assert "1" == String.valueOf(1i)
     assert "No long for you!" == String.valueOf(1l)
   }
+
+  void testExpandSingleInstance() {
+    def a = "expand"
+    def b = "no expand"
+
+    a.metaClass.capitalizer = {->
+      delegate.toUpperCase()
+    }
+
+    assert "EXPAND" == a.capitalizer()
+    shouldFail MissingMethodException, {
+      b.capitalizer()
+    }
+  }
 }

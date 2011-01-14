@@ -2,6 +2,8 @@ package exploregroovy.basics
 
 
 class ClosuresTest extends GroovyTestCase {
+  def __ = "What do you expect?"
+
   void testWhatIsAClosure() {
     def closure = {
       "from closure"
@@ -28,7 +30,7 @@ class ClosuresTest extends GroovyTestCase {
 
   void testClosureVariablesBoundToScopeAtDefinition() {
     def closure = closureBuilder()
-    assert "Butch" == closure()
+    assert __ == closure()
   }
 
   void testClosureWithCurriedArguments() {
@@ -37,10 +39,10 @@ class ClosuresTest extends GroovyTestCase {
     }
 
     def curried = closure.curry(7)
-    assert 12 == curried(5)
+    assert __ == curried(5)
 
     curried = closure.curry(7, 5)
-    assert 12 == curried()
+    assert __ == curried()
   }
 
   void testClosureWhatIsThis() {
@@ -84,17 +86,16 @@ class ClosuresTest extends GroovyTestCase {
   }
 
   void testClosureThisAndOwnerAreReadOnly() {
-    def x = "Who me?"
     def closure = {
       "Hiya"
     }
 
     shouldFail MissingPropertyException, {
-      closure.owner = x
+      closure.owner = "Who me?"
     }
 
     shouldFail MissingPropertyException, {
-      closure.thisObject = x
+      closure.thisObject = "Who me?"
     }
   }
 

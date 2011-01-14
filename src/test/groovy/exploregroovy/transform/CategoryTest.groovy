@@ -7,8 +7,8 @@ class CategoryTest extends GroovyTestCase {
       1.second()
     }
 
-    use (exploregroovy.transform.TimeCategory) {  // there's a groovy API one too
-      assert 4.seconds() ==  1.second() + 3.seconds()
+    use(exploregroovy.transform.TimeCategory) {  // there's a groovy API one too
+      assert 4.seconds() == 1.second() + 3.seconds()
       assert 1.minute() == 60.seconds()
     }
   }
@@ -34,7 +34,8 @@ class CategoryTest extends GroovyTestCase {
   class ModelT extends Automobile {
   }
 
-  @Mixin([AntilockBrakesAbility, CarRadioAbility, SportEngineAbility])
+  @Mixin([AntilockBrakesAbility, SportEngineAbility, CarRadioAbility])
   class Porsche extends Automobile {
   }
+
 }

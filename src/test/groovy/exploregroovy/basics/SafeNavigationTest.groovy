@@ -11,6 +11,7 @@ class SafeNavigationTest extends GroovyTestCase {
     }
 
     assert personB.techTalks?.size() == null
+    assert personA.techTalks?.size() == 3
   }
 
   void testElvisOperator() {

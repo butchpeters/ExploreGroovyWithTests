@@ -1,6 +1,7 @@
 package exploregroovy.basics
 
 class CollectionsTest extends GroovyTestCase {
+  def __ = "What do you expect?"
 
   void testLists() {
     def list = ["a", 2, Double.valueOf(3)]
@@ -32,9 +33,9 @@ class CollectionsTest extends GroovyTestCase {
 
   void testSets() {
     def mySet = [1, 2, 3, 2, 1] as Set
-    assert 3 == mySet.size()
+    assert __ == mySet.size()
     mySet << 3
-    assert 3 == mySet.size()
+    assert __ == mySet.size()
 
     def mySortedSet = ["cows", "aardvarks", "mice"] as SortedSet
     def sortedList = []
@@ -49,15 +50,15 @@ class CollectionsTest extends GroovyTestCase {
 
   void testRanges() {
     def myRange = 1..10
-    assert 10 == myRange.size()
-    assert 1 == myRange.first()
-    assert 10 == myRange.last()
+    assert __ == myRange.size()
+    assert __ == myRange.first()
+    assert __ == myRange.last()
     assert myRange instanceof java.util.List
 
     def backwards = 10..1
-    assert 10 == backwards.size()
-    assert 10 == backwards.first()
-    assert 1 == backwards.last()
+    assert __ == backwards.size()
+    assert __ == backwards.first()
+    assert __ == backwards.last()
   }
 
   void testMaps() {
@@ -76,7 +77,7 @@ class CollectionsTest extends GroovyTestCase {
             }
 
     def colors = ["red": "F00", "green": "0F0", "blue": "00F"]
-    assert "red" ==
+    assert __ ==
             colors.find { key, value ->
               value == "F00"
             }.key
@@ -89,7 +90,7 @@ class CollectionsTest extends GroovyTestCase {
     }
 
     assert !grouped[2]
-    assert 4 == grouped[3].size()
-    assert 3 == grouped[4].size()
+    assert __ == grouped[3].size()
+    assert __ == grouped[4].size()
   }
 }
